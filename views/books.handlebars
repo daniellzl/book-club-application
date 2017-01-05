@@ -1,0 +1,22 @@
+<div class='col-sm-4 col-md-4 col-lg-4'>
+    {{#if book.imageURL}}
+        <img alt="Book Image" src={{book.imageURL}} class="img-rounded" width="300" height="500"/>
+    {{else}}
+        <img  alt="Book Image" src='https://upload.wikimedia.org/wikipedia/commons/1/16/No_image_available_450_x_600.svg' class="img-rounded" width="300" height="500"/>
+    {{/if}}
+</div>
+<div class='col-sm-8 col-md-8 col-lg-8'>
+    <h1 id='bookWantedTitle'>{{book.title}}</h1>
+    <p>Author: {{book.author}}</p>
+    {{#if book.comments}}
+    <p>Comments: {{book.comments}}</p>
+    {{else}}
+    {{/if}}
+    <p class='hide' id='bookId'>{{book._id}}</p>
+    <p class='hide' id='ownerId'>{{book.ownerId}}</p>
+    <div class="dropdown">
+        <button id="trade" class="btn btn-warning dropdown-toggle" type="button" data-toggle="dropdown" title="Trade for {{book.title}} with a book from your own list of books">Send Trade Request <span class="caret"></span></button>
+        <ul id="dropdown" class="dropdown-menu"></ul>
+    </div>
+</div>
+

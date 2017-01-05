@@ -1,0 +1,75 @@
+body {
+    font-family: "Courier New", Courier, monospace;
+    color: #854442;
+    background-image: url('http://cdn.backgroundhost.com/backgrounds/subtlepatterns/tileable_wood_texture.png');
+}
+
+.container {
+    margin-top: 10px;
+}
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: #fff4e6;
+}
+
+.well {
+    background-color: #3c2f2f;
+    color: #fff4e6;
+    border-radius: 7px;
+}
+
+footer  {
+    margin-top: 40px;
+    color: #854442;
+}
+
+footer > a:link, footer > a:visited, footer > a:hover, footer > a:active {
+    text-decoration: none;
+    color: #854442;
+}
+
+.row {
+    margin-top: 40px;
+}
+
+#navBarTitle {
+    letter-spacing: 1px;
+    color: #854442;
+    font-size: 1.25em;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #be9b7b;
+}
+
+
+li {
+    display: inline-block;
+    cursor: pointer;
+}
+
+li a, li p {
+    display: block;
+    text-decoration: none;
+    margin: 0px;
+    text-align: center;
+    padding: 10px 20px;
+}
+
+li a:hover {
+    background-color: #854442;
+}
+
+.modal-content {
+    background-color: #854442;
+    color: #fff4e6;
+}
+
+.modal-footer {
+    text-align: center;
+}

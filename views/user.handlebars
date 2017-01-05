@@ -1,0 +1,106 @@
+<div class='row'>
+    <div class='col-sm-4 col-md-4 col-lg-4'>
+        <h3>Account Information</h3>
+        <div class='well'>
+            <p>Username: {{user.username}}</p>
+            <p>Email: {{user.email}}</p>
+            <p>Name: {{user.name}}</p>
+            <p>City: {{user.city}}</p>
+            <p>State: {{user.state}}</p>
+            <p>Zip: {{user.zip}}</p>
+        </div>
+    </div>
+    <div class='col-sm-4 col-md-4 col-lg-4'>
+        <h3>Update Account</h3>
+        <div class='well'>
+            <form>
+                <div class="form-group">
+                    <input class="form-control" id='name' type='text' name='name' placeholder='Full Name'>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" id='city' type='text' name='city' placeholder='City'>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" id='state' type='text' name='state' placeholder='State'>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" id='zip' type='text' name='zip' placeholder='Zip Code'>
+                </div>
+            </form>
+            <button class="btn btn-warning" id='update' type="submit">Update</button>
+        </div>
+    </div>
+    <div class='col-sm-4 col-md-4 col-lg-4'>
+        <h3>Add a Book</h3>
+        <div class='well'>
+            <form>
+                <div class="form-group">
+                    <input class="form-control" id='title' type='text' name='title' placeholder='Book Title'>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" id='author' type='text' name='author' placeholder='Author'>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" id='imageURL' type='text' name='imageURL' placeholder="Image URL of Book's Cover">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" id='comments' type='text' name='comments' placeholder='Additional Comments?'>
+                </div>
+            </form>
+            <button class="btn btn-warning" id='addBook' type="submit">Add Book</button>
+        </div>
+    </div>
+</div>
+<div class='row'>
+        <h3>My Books</h3>
+        {{#if books}}
+            {{#books}}
+                <div id={{_id}} class='col-sm-4 col-md-4 col-lg-4 well'>
+                    <div>
+                        <h3>{{title}}</h3>
+                        <p>Author: {{author}}</p>
+                        <p>Image URL:  {{imageURL}}</p>
+                        {{#if book.comments}}
+                            <p>Comments: {{comments}}</p>
+                        {{else}}
+                        {{/if}}
+                        </div>
+                    <div>
+                    <h3>Trades</h3>
+                        {{#if tradeOfferAccepted}}
+                            <p>Trade accepted. Please send book to {{traderInformation.name}}, {{traderInformation.city}}, {{traderInformation.state}} {{traderInformation.zip}}</p>
+                        {{else}}
+                            {{#if tradeWanted}}
+                                {{#each tradeWanted}}
+                                    {{#if bookWantedAvailable}}
+                                        <p>- I requested to trade {{bookOfferedTitle}} for <a href='/books/{{bookWantedId}}'>{{bookWantedTitle}}</a></p>
+                                    {{else}}
+                                        <p>- {{bookWantedTitle}} is no longer available</p>
+                                    {{/if}}
+                                {{/each}}
+                            {{else if tradeOffers}}
+                                {{#each tradeOffers}}
+                                    <p> - Someone wants to trade {{bookWantedTitle}} for <a href="/books/{{bookOfferedId}}">{{bookOfferedTitle}}</a><button class="btn btn-info btn-sm" onclick="acceptTrade('{{bookWantedId}}','{{bookWantedOwnerId}}','{{bookOfferedId}}','{{bookOfferedOwnerId}}')">Accept Trade for {{bookOfferedTitle}}</button></p>
+                                {{/each}}
+                            {{else}}
+                                <p>No trades requested or received.</p>
+                            {{/if}}
+                        {{/if}}
+                    </div>
+                    <br>
+                    <div>
+                        <form action="/user/removeBook/{{_id}}" method="post">
+                            <button type="submit" class="btn btn-danger">Remove {{title}}</button>
+                        </form>
+                    </div>
+                </div>
+            {{/books}}
+        {{else}}
+        <div class="well text-center">
+            <h3>No books have been added yet.</h3>
+        </div>
+        {{/if}}
+</div>
+<div class='text-center'>
+    <a href="/user/logout" class="btn btn-warning" role="button">Log Out</a>
+</div>

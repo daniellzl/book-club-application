@@ -1,0 +1,25 @@
+<div class='text-center'>
+    <h3>Books available for trade are below. <a href='/user' class="btn btn-warning" role="button" title="Log into Your Account">Log in</a> to add and trade your own books.</h3>
+    <div class='row'>
+        {{#books}}
+            <div class='col-sm-3 col-md-3 col-lg-3'>
+                <a href='/books/{{_id}}' title='{{title}}'>
+                    <div class='well'>
+                        <div>
+                            {{#if imageURL}}
+                                <img alt="Book Image" src={{imageURL}} class="img-rounded" width="200" height="300"/>
+                            {{else}}
+                                <img alt="Book Image" src='https://upload.wikimedia.org/wikipedia/commons/1/16/No_image_available_450_x_600.svg' class="img-rounded" width="200" height="300"/>
+                            {{/if}}
+                        </div>
+                        <div>
+                            <h4>{{title}}</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {{else}}
+            <p>No books available for trade.</p>
+        {{/books}}
+    </div>
+</div>
