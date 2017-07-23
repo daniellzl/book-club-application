@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Manage a Book Trading Club",
   "main": "app.js",
+  "engines": {
+    "node": "6.11.1"
+  },
   "scripts": {
     "start": "node app.js"
   },
